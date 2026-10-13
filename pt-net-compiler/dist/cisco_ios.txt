@@ -1,0 +1,21 @@
+enable
+configure terminal
+hostname Core-Router
+no ip domain-lookup
+interface GigabitEthernet0/0
+ description LAN_LAN_1
+ ip address 192.168.10.1 255.255.255.192
+ no shutdown
+ exit
+interface GigabitEthernet0/1
+ description LAN_LAN_2
+ ip address 192.168.10.65 255.255.255.192
+ no shutdown
+ exit
+interface GigabitEthernet0/2
+ description LAN_LAN_3
+ ip address 192.168.10.129 255.255.255.192
+ no shutdown
+ exit
+end
+write memory

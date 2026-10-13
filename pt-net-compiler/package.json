@@ -1,0 +1,17 @@
+{
+  "name": "pt-net-compiler",
+  "version": "1.0.0",
+  "description": "Compiler & Topology Generator for Cisco Packet Tracer (IPC API)",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
