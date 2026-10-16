@@ -6,7 +6,7 @@ export async function runInteractivePrompts(): Promise<CompilerInput> {
   console.log(' Autoacao de sub-reds PT');
 
   const cidrBlock = await input({
-    message: '1. Digite o bloco IP base passado pelo professor (ex: 192.168.10.0/24):',
+    message: '1. Digite o bloco IP base (ex: 192.168.10.0/24):',
     default: '192.168.10.0/24',
     validate: (val) => {
       const match = val.trim().match(/^(\d+\.\d+\.\d+\.\d+)\/(\d+)$/);
