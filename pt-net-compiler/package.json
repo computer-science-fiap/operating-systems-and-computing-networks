@@ -4,7 +4,8 @@
   "description": "Compiler & Topology Generator for Cisco Packet Tracer (IPC API)",
   "scripts": {
     "start": "tsx src/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "test": "tsx --test \"src/**/*.test.ts\""
   },
   "dependencies": {
     "@inquirer/prompts": "^5.0.0"

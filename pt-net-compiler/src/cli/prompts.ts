@@ -2,9 +2,6 @@ import { input, select } from '@inquirer/prompts';
 import { AllocationMode, CompilerInput, SubnetRequirement } from '../types/network';
 
 export async function runInteractivePrompts(): Promise<CompilerInput> {
-  console.clear();
-  console.log(' Autoacao de sub-reds PT');
-
   const cidrBlock = await input({
     message: '1. Digite o bloco IP base (ex: 192.168.10.0/24):',
     default: '192.168.10.0/24',

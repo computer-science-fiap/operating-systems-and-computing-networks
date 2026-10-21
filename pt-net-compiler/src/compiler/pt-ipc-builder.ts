@@ -1,34 +1,12 @@
 import { CalculatedSubnet } from '../types/network';
 import { calculateCanvasLayout } from './layout-engine';
+import { ES5_HELPERS } from './pt-es5-runtime';
 
 export function compileToPacketTracerES5(subnets: CalculatedSubnet[]): string {
   const layout = calculateCanvasLayout(subnets);
   const payload = JSON.stringify({ subnets, layout }, null, 2);
 
-  return `function logMsg(msg) {
-    if (typeof dprint === "function") {
-        dprint(String(msg));
-    }
-}
-
-function clearCanvas(net, lw) {
-    var count = net.getDeviceCount();
-    for (var d = count - 1; d >= 0; d--) {
-        var dev = net.getDeviceAt(d);
-        if (dev) {
-            lw.removeDevice(dev.getName());
-        }
-    }
-}
-
-function renameDevice(devObj, label) {
-    if (!devObj) return;
-    if (typeof devObj.setName === "function") {
-        devObj.setName(label);
-    } else if (typeof devObj.setCustomName === "function") {
-        devObj.setCustomName(label);
-    }
-}
+  return `${ES5_HELPERS}
 
 function injectStaticRoutes(rObj, routes) {
     if (!rObj || routes.length === 0) return;

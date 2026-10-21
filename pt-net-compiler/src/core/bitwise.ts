@@ -43,3 +43,18 @@ export function normalizeNetworkAddress(ip: string, cidr: number): number {
   const maskInt = cidr === 0 ? 0 : (~0 << (32 - cidr)) >>> 0;
   return (ipInt & maskInt) >>> 0;
 }
+export function usableHostsToCidr(requiredHosts: number): number {
+  const hostBits = Math.max(2, Math.ceil(Math.log2(requiredHosts + 2)));
+  const cidr = 32 - hostBits;
+  if (cidr < 8) {
+    throw new Error(`Quantidade de hosts exagerada (${requiredHosts})`);
+  }
+  return cidr;
+}
+
+export function classfulNetwork(ip: string): string {
+  const firstOctet = ipToInt(ip) >>> 24;
+  if (firstOctet < 128) return `${firstOctet}.0.0.0`;
+  const [a, b, c] = ip.trim().split('.');
+  return firstOctet < 192 ? `${a}.${b}.0.0` : `${a}.${b}.${c}.0`;
+}

@@ -1,2 +1,3 @@
 node_modules/
 pt-net-compiler/build/
+pt-net-compiler/dist/checkpoint_*/

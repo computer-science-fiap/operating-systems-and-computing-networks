@@ -47,9 +47,9 @@ export function calculateCanvasLayout(subnets: CalculatedSubnet[]): CanvasCoordi
     routers.push({ x: Math.round(centerX), y: 90 });
   } else {
     const totalRouters = Math.ceil(totalSubnets / 2);
-    for (var r = 0; r < totalRouters; r++) {
+    for (let r = 0; r < totalRouters; r++) {
       const firstSubIdx = r * 2;
-      const secondSubIdx = Math.min(firstSubnetsIndex(firstSubIdx + 1, totalSubnets), totalSubnets - 1);
+      const secondSubIdx = Math.min(firstSubIdx + 1, totalSubnets - 1);
       const x1 = subnetLayouts[firstSubIdx].switchPos.x;
       const x2 = subnetLayouts[secondSubIdx].switchPos.x;
       routers.push({
@@ -64,8 +64,4 @@ export function calculateCanvasLayout(subnets: CalculatedSubnet[]): CanvasCoordi
     routers,
     subnets: subnetLayouts,
   };
-}
-
-function firstSubnetsIndex(idx: number, total: number): number {
-  return idx < total ? idx : total - 1;
 }
